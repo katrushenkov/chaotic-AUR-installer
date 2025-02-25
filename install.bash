@@ -13,7 +13,7 @@ chaotic-aur-mirrorlist-setup()
 
 system-update()
 {
-    pacman -Syu chaotic-keyring
+    pacman -Syu --noconfirm chaotic-keyring
 }
 
 check-mirror-exists()
@@ -47,7 +47,7 @@ check-mirror-exists
 make-sure-system-is-updated()
 {
 echo -e "${Green}To avoid unknown errors, let's make sure system is updated${NC}"
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 }
 
 let-s-install-it()
@@ -65,14 +65,14 @@ echo -e "${Green}Please don't continue any further if you have encountered any e
 echo "https://aur.chaotic.cx/"
 echo ""
 
-while true; do
-    read -p "Do you want to continue?(yes or no) " yn
-    case $yn in
-        [Yy]* ) echo ""; echo -e "${Green}Wait...${NC}"; echo ""; sleep 2; break;;
-        [Nn]* ) echo ""; cd ..; rm -rf installing-chaotic-aur-pkg.tmp/; exit;;
-        * ) echo -e "${Green}Please answer yes or no. Press y for yes or n for no. ${NC}";;
-    esac
-done
+#while true; do
+#    read -p "Do you want to continue?(yes or no) " yn
+#    case $yn in
+#        [Yy]* ) echo ""; echo -e "${Green}Wait...${NC}"; echo ""; sleep 2; break;;
+#        [Nn]* ) echo ""; cd ..; rm -rf installing-chaotic-aur-pkg.tmp/; exit;;
+#        * ) echo -e "${Green}Please answer yes or no. Press y for yes or n for no. ${NC}";;
+#    esac
+#done
 
 config-file-append
 }
